@@ -29,6 +29,6 @@
         "github":"https://github.com/rubjo/victor-mono"
     },
     "autoupdate": {
-        "url": "https://github.com/rubjo/victor-mono/archive/v$version.zip",
+        "url": "https://github.com/rubjo/victor-mono/archive/v$version.zip"
     }
 }
