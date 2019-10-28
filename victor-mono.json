@@ -25,8 +25,10 @@
             "Write-Host \"The '$($app.Replace('-NF', ''))' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
         ]
     },
-    "checkver": "github",
+    "checkver": {
+        "github":"https://github.com/rubjo/victor-mono"
+    },
     "autoupdate": {
-        "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
+        "url": "https://github.com/rubjo/victor-mono/archive/v$version.zip",
     }
 }
