@@ -2,36 +2,31 @@
     "version": "latest",
     "homepage": "https://rubjo.github.io/victor-mono/",
     "description": "Victor Mono is a free programming font with semi-connected cursive italics, symbol ligatures (!=, ->>, =>, ===, <=, >=, ++) and Latin, Cyrillic and Greek characters. ",
-    "license": "MIT",
-    "url": "https://github.com/source-foundry/Hack-windows-installer/releases/download/v1.6.0/HackFontsWindowsInstaller.exe",
-    "hash": "a408b54d3b08f9a120574a6da1f1c6bbf2af7e9803c50da49ef13090f5edcc67",
+    "license": "Unknown",
+    "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
+    "hash": "no-check",
+    "depends": "sudo",
     "installer": {
-        "file": "HackFontsWindowsInstaller.exe",
-        "args": [
-            "/VERYSILENT",
-            "/DIR=\"$dir\"",
-            "/SUPPRESSMSGBOXES",
-            "/NORESTART",
-            "/CLOSEAPPLICATIONS",
-            "/NORESTARTAPPLICATIONS"
+        "script": [
+            "if(!(is_admin)) { error \"Admin rights are required, please run 'sudo scoop install $app'\"; exit 1 }",
+            "Get-ChildItem $dir -filter '*Windows Compatible.*' | ForEach-Object {",
+            "    New-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Value $_.Name -Force | Out-Null",
+            "    Copy-Item $_.FullName -destination \"$env:windir\\Fonts\"",
+            "}"
         ]
     },
     "uninstaller": {
-        "file": "unins000.exe",
-        "args": [
-            "/VERYSILENT",
-            "/SUPPRESSMSGBOXES",
-            "/NORESTART"
+        "script": [
+            "if(!(is_admin)) { error \"Admin rights are required, please run 'sudo scoop uninstall $app'\"; exit 1 }",
+            "Get-ChildItem $dir -filter '*Windows Compatible.*' | ForEach-Object {",
+            "    Remove-ItemProperty -Path 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Fonts' -Name $_.Name.Replace($_.Extension, ' (TrueType)') -Force -ErrorAction SilentlyContinue",
+            "    Remove-Item \"$env:windir\\Fonts\\$($_.Name)\" -Force -ErrorAction SilentlyContinue",
+            "}",
+            "Write-Host \"The '$($app.Replace('-NF', ''))' Font family has been uninstalled and will not be present after restarting your computer.\" -Foreground Magenta"
         ]
     },
-    "checkver": {
-        "github": "https://github.com/source-foundry/Hack-windows-installer"
-    },
+    "checkver": "github",
     "autoupdate": {
-        "url": "https://github.com/source-foundry/Hack-windows-installer/releases/download/v$version/HackFontsWindowsInstaller.exe",
-        "hash": {
-            "url": "https://github.com/source-foundry/Hack-windows-installer/releases/tag/v$version",
-            "regex": "Installer SHA-256 hash $sha256"
-        }
+        "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
     }
 }
