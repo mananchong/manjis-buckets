@@ -3,7 +3,7 @@
     "homepage": "https://rubjo.github.io/victor-mono/",
     "description": "Victor Mono is a free programming font with semi-connected cursive italics, symbol ligatures (!=, ->>, =>, ===, <=, >=, ++) and Latin, Cyrillic and Greek characters. ",
     "license": "Unknown",
-    "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
+    "url": "https://github.com/rubjo/victor-mono/archive/v1.2.7.zip",
     "hash": "no-check",
     "depends": "sudo",
     "installer": {
