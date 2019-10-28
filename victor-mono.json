@@ -4,7 +4,7 @@
     "description": "A programming font with semi-connected cursive italics and symbol ligatures",
     "license": "Unknown",
     "url": "https://rubjo.github.io/victor-mono/VictorMonoAll.zip",
-    "extract_dir": "OTF"
+    "extract_dir": "OTF",
     "hash": "4749ac40b4293bf02af579a6b2bbeb03af7d5e223291c54acddee7114da89318",
     "depends": "sudo",
     "installer": {
